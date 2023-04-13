@@ -8,4 +8,9 @@ def solution(...) -> bool: # Одна или две выборке на вход
     # Измените код этой функции
     # Это будет вашим решением
     # Не меняйте название функции и её аргументы
-    return ... # Ваш ответ, True или False
+    p_value = permutation_test((x, y), lambda x, y, axis: np.mean(x, axis=axis) - np.mean(y, axis=axis), 
+                 vectorized=True, 
+                 n_resamples=5000,
+                 alternative='greater').pvalue 
+    alpha = 0.08
+    return p_value < alpha
